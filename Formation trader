@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formation Trader Rentable</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+–navy: #0D1B2A;
+–navy2: #1B2B3A;
+–blue: #1A56DB;
+–blue-light: #3B82F6;
+–green: #16A34A;
+–white: #FFFFFF;
+–off: #F8FAFC;
+–grey: #64748B;
+–light: #E2E8F0;
+–text: #1E293B;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, ‘Segoe UI’, sans-serif; color: var(–text); background: var(–white); }
+
+nav {
+background: var(–navy);
+padding: 16px 24px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+position: sticky;
+top: 0;
+z-index: 100;
+}
+.nav-logo { color: white; font-weight: 800; font-size: 17px; }
+.nav-logo span { color: #93C5FD; }
+.nav-cta {
+background: var(–blue);
+color: white;
+padding: 9px 20px;
+border-radius: 6px;
+font-size: 13px;
+font-weight: 600;
+text-decoration: none;
+}
+
+.hero {
+background: linear-gradient(160deg, var(–navy) 0%, var(–navy2) 100%);
+color: white;
+padding: 70px 24px 80px;
+text-align: center;
+}
+
+.hero-tag {
+display: inline-block;
+background: rgba(59,130,246,0.15);
+border: 1px solid rgba(59,130,246,0.3);
+color: #93C5FD;
+font-size: 12px;
+font-weight: 600;
+padding: 7px 16px;
+border-radius: 20px;
+margin-bottom: 28px;
+}
+
+.hero h1 {
+font-size: clamp(32px, 7vw, 58px);
+font-weight: 900;
+line-height: 1.15;
+margin-bottom: 20px;
+max-width: 680px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.hero h1 em { color: #93C5FD; font-style: normal; }
+
+.hero-desc {
+font-size: 16px;
+color: #94A3B8;
+max-width: 500px;
+margin: 0 auto 36px;
+line-height: 1.8;
+}
+
+.hero-desc strong { color: white; }
+
+.btn-primary {
+display: inline-block;
+background: var(–blue);
+color: white;
+padding: 16px 40px;
+border-radius: 8px;
+font-size: 16px;
+font-weight: 700;
+text-decoration: none;
+box-shadow: 0 4px 20px rgba(26,86,219,0.4);
+}
+
+.hero-price {
+font-size: 14px;
+color: #64748B;
+margin-top: 14px;
+}
+.hero-price s { color: #475569; }
+.hero-price strong { color: #4ADE80; font-size: 16px; }
+
+.stats {
+background: var(–off);
+border-top: 1px solid var(–light);
+border-bottom: 1px solid var(–light);
+padding: 32px 24px;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 24px;
+max-width: 700px;
+margin: 0 auto;
+text-align: center;
+}
+
+@media(min-width: 600px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+
+.stat-num { font-size: 30px; font-weight: 900; color: var(–navy); line-height: 1; }
+.stat-label { font-size: 12px; color: var(–grey); margin-top: 4px; font-weight: 500; }
+
+.section { padding: 64px 24px; max-width: 800px; margin: 0 auto; }
+
+.section-label {
+display: inline-block;
+background: #EFF6FF;
+color: var(–blue);
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+padding: 5px 12px;
+border-radius: 4px;
+margin-bottom: 14px;
+}
+
+.section h2 {
+font-size: clamp(26px, 5vw, 40px);
+font-weight: 900;
+color: var(–navy);
+margin-bottom: 12px;
+line-height: 1.2;
+}
+
+.section-sub { font-size: 15px; color: var(–grey); line-height: 1.8; max-width: 560px; }
+
+.audience-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 14px;
+margin-top: 32px;
+}
+
+.audience-card {
+padding: 18px;
+border-radius: 10px;
+border: 1px solid var(–light);
+display: flex;
+gap: 10px;
+align-items: flex-start;
+background: var(–off);
+}
+
+.audience-icon { font-size: 20px; flex-shrink: 0; }
+.audience-text { font-size: 13px; font-weight: 600; color: var(–text); line-height: 1.5; }
+
+.programme { background: var(–off); border-top: 1px solid var(–light); border-bottom: 1px solid var(–light); }
+
+.prog-list { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
+
+.prog-item {
+background: white;
+border: 1px solid var(–light);
+border-radius: 10px;
+padding: 18px 20px;
+display: flex;
+gap: 14px;
+align-items: flex-start;
+}
+
+.prog-num {
+background: var(–navy);
+color: white;
+font-size: 12px;
+font-weight: 800;
+width: 30px; height: 30px;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+}
+
+.prog-title { font-size: 15px; font-weight: 700; color: var(–navy); margin-bottom: 4px; }
+.prog-desc { font-size: 13px; color: var(–grey); line-height: 1.6; }
+
+.testi-grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 14px;
+margin-top: 32px;
+}
+
+@media(min-width:580px) { .testi-grid { grid-template-columns: 1fr 1fr; } }
+
+.testi-card {
+background: var(–off);
+border: 1px solid var(–light);
+border-radius: 12px;
+padding: 22px;
+}
+
+.testi-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.testi-avatar {
+width: 40px; height: 40px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 16px;
+background: var(–navy);
+color: white;
+font-weight: 800;
+flex-shrink: 0;
+}
+.testi-name { font-size: 14px; font-weight: 700; color: var(–navy); }
+.testi-role { font-size: 12px; color: var(–grey); }
+.testi-stars { color: #FBBF24; font-size: 13px; margin-bottom: 8px; }
+.testi-text { font-size: 13px; color: #475569; line-height: 1.7; font-style: italic; }
+.result-badge {
+display: inline-block;
+background: #DCFCE7;
+color: var(–green);
+font-size: 12px;
+font-weight: 700;
+padding: 4px 10px;
+border-radius: 20px;
+margin-top: 10px;
+}
+
+.garantie-box {
+background: linear-gradient(135deg, #EFF6FF, #F0FDF4);
+border: 1px solid #BFDBFE;
+border-radius: 14px;
+padding: 36px 24px;
+text-align: center;
+max-width: 760px;
+margin: 0 auto 64px;
+}
+
+.garantie-box .icon { font-size: 44px; margin-bottom: 12px; }
+.garantie-box h3 { font-size: 24px; font-weight: 900; color: var(–navy); margin-bottom: 10px; }
+.garantie-box p { font-size: 14px; color: var(–grey); max-width: 440px; margin: 0 auto; line-height: 1.8; }
+
+.offre-section {
+background: var(–navy);
+padding: 72px 24px;
+text-align: center;
+}
+
+.offre-section h2 {
+font-size: clamp(28px, 5vw, 48px);
+font-weight: 900;
+color: white;
+margin-bottom: 8px;
+}
+
+.offre-section h2 em { color: #93C5FD; font-style: normal; }
+
+.offre-card {
+background: white;
+border-radius: 16px;
+padding: 36px 28px;
+max-width: 440px;
+margin: 32px auto 0;
+text-align: left;
+}
+
+.offre-price-block { text-align: center; margin-bottom: 24px; }
+.offre-price-old { font-size: 15px; color: var(–grey); text-decoration: line-through; }
+.offre-price-new { font-size: 52px; font-weight: 900; color: var(–navy); line-height: 1; }
+.offre-price-note { font-size: 13px; color: var(–green); font-weight: 600; margin-top: 4px; }
+
+.offre-includes h4 { font-size: 12px; font-weight: 700; color: var(–grey); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+
+.offre-item {
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 8px 0;
+border-bottom: 1px solid var(–light);
+font-size: 14px;
+font-weight: 500;
+color: var(–text);
+}
+
+.offre-item:last-child { border-bottom: none; }
+.check { color: var(–green); font-size: 16px; }
+
+.btn-offre {
+display: block;
+background: var(–blue);
+color: white;
+text-align: center;
+padding: 16px;
+border-radius: 8px;
+font-size: 16px;
+font-weight: 700;
+text-decoration: none;
+margin-top: 24px;
+box-shadow: 0 4px 20px rgba(26,86,219,0.3);
+}
+
+.offre-secure { text-align: center; font-size: 12px; color: var(–grey); margin-top: 10px; }
+
+.faq-list { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
+
+.faq-item { border: 1px solid var(–light); border-radius: 10px; overflow: hidden; }
+
+.faq-q {
+padding: 16px 18px;
+font-size: 14px;
+font-weight: 600;
+color: var(–navy);
+cursor: pointer;
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: white;
+}
+
+.faq-a {
+padding: 0 18px;
+font-size: 13px;
+color: var(–grey);
+line-height: 1.8;
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.3s ease, padding 0.3s;
+background: var(–off);
+}
+
+.faq-item.open .faq-a { max-height: 200px; padding: 14px 18px; }
+.faq-arrow { transition: transform 0.3s; font-size: 12px; color: var(–grey); }
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+footer {
+background: var(–navy);
+padding: 24px;
+text-align: center;
+font-size: 12px;
+color: #475569;
+}
+footer a { color: #64748B; text-decoration: none; margin: 0 6px; }
+</style>
+
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Trader<span>Rentable</span></div>
+  <a href="#offre" class="nav-cta">Accéder →</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">🎯 Formation complète · Résultats garantis</div>
+  <h1>Deviens trader rentable<br>en <em>12 mois</em>, même en partant de zéro</h1>
+  <p class="hero-desc">
+    Une méthode structurée, éprouvée et accompagnée pour <strong>maîtriser les marchés financiers</strong> et générer tes premiers profits réguliers.
+  </p>
+  <a href="#offre" class="btn-primary">Accéder à la formation →</a>
+  <p class="hero-price">Seulement <strong>97€</strong> · Accès à vie · <s>197€</s></p>
+</div>
+
+<div class="stats">
+  <div><div class="stat-num">1 200+</div><div class="stat-label">Élèves formés</div></div>
+  <div><div class="stat-num">4,9 ★</div><div class="stat-label">Note moyenne</div></div>
+  <div><div class="stat-num">12 mois</div><div class="stat-label">Pour être rentable</div></div>
+  <div><div class="stat-num">30 j</div><div class="stat-label">Satisfait ou remboursé</div></div>
+</div>
+
+<div class="section">
+  <span class="section-label">Pour qui ?</span>
+  <h2>Cette formation est faite pour toi si...</h2>
+  <div class="audience-grid">
+    <div class="audience-card"><div class="audience-icon">🔰</div><div class="audience-text">Tu es débutant et tu veux apprendre sérieusement</div></div>
+    <div class="audience-card"><div class="audience-icon">💸</div><div class="audience-text">Tu as perdu de l'argent et tu veux comprendre pourquoi</div></div>
+    <div class="audience-card"><div class="audience-icon">⏱️</div><div class="audience-text">Tu veux trader sans y passer toute ta journée</div></div>
+    <div class="audience-card"><div class="audience-icon">📈</div><div class="audience-text">Tu veux une source de revenus complémentaires</div></div>
+  </div>
+</div>
+
+<div class="programme">
+  <div class="section">
+    <span class="section-label">Programme</span>
+    <h2>6 modules pour tout maîtriser</h2>
+    <p class="section-sub">Du débutant au trader rentable — chaque module suit une progression logique et efficace.</p>
+    <div class="prog-list">
+      <div class="prog-item"><div class="prog-num">01</div><div><div class="prog-title">Les fondamentaux du trading</div><div class="prog-desc">Comprendre les marchés, le vocabulaire et les erreurs que font 90% des débutants.</div></div></div>
+      <div class="prog-item"><div class="prog-num">02</div><div><div class="prog-title">Analyse technique complète</div><div class="prog-desc">Lire un graphique, identifier les tendances, supports/résistances et indicateurs clés.</div></div></div>
+      <div class="prog-item"><div class="prog-num">03</div><div><div class="prog-title">Gestion du risque & money management</div><div class="prog-desc">Protéger son capital, position sizing, stop-loss et ratio risque/rendement.</div></div></div>
+      <div class="prog-item"><div class="prog-num">04</div><div><div class="prog-title">3 stratégies rentables clés en main</div><div class="prog-desc">Forex, Crypto et Indices avec des règles d'entrée/sortie précises et backtestées.</div></div></div>
+      <div class="prog-item"><div class="prog-num">05</div><div><div class="prog-title">Psychologie du trader gagnant</div><div class="prog-desc">Gérer ses émotions, éviter le revenge trading et rester discipliné.</div></div></div>
+      <div class="prog-item"><div class="prog-num">06</div><div><div class="prog-title">Ton plan de trading personnalisé</div><div class="prog-desc">Construis ton propre système adapté à ton profil et tes objectifs.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <span class="section-label">Témoignages</span>
+  <h2>Ils ont suivi la formation</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-header"><div class="testi-avatar">T</div><div><div class="testi-name">Thomas R.</div><div class="testi-role">Trader Forex</div></div></div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"En 8 mois j'ai remboursé la formation plus de 10 fois. La gestion du risque m'a tout changé."</div>
+      <div class="result-badge">+34% en 6 mois</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-header"><div class="testi-avatar">K</div><div><div class="testi-name">Kévin M.</div><div class="testi-role">Trader Crypto</div></div></div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Avant je perdais de l'argent chaque mois. Maintenant j'ai un système rentable et je suis serein."</div>
+      <div class="result-badge">Rentable depuis 4 mois</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-header"><div class="testi-avatar">S</div><div><div class="testi-name">Sarah L.</div><div class="testi-role">Trader Indices</div></div></div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Le module psychologie est incroyable. J'ai arrêté les décisions émotionnelles et mes résultats ont explosé."</div>
+      <div class="result-badge">+22% en 3 mois</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-header"><div class="testi-avatar">A</div><div><div class="testi-name">Antoine D.</div><div class="testi-role">Débutant complet</div></div></div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Je ne connaissais rien au trading il y a 1 an. Aujourd'hui je génère un revenu complémentaire chaque mois."</div>
+      <div class="result-badge">1er compte rentable</div>
+    </div>
+  </div>
+</div>
+
+<div class="garantie-box">
+  <div class="icon">🛡️</div>
+  <h3>Garantie satisfait ou remboursé 30 jours</h3>
+  <p>Si dans les 30 jours tu n'es pas satisfait, on te rembourse intégralement. Aucune question posée, aucune condition.</p>
+</div>
+
+<div class="offre-section" id="offre">
+  <h2>Commence <em>maintenant</em><br>et change ta vie financière</h2>
+  <div class="offre-card">
+    <div class="offre-price-block">
+      <div class="offre-price-old">Valeur réelle : 197€</div>
+      <div class="offre-price-new">97€</div>
+      <div class="offre-price-note">✓ Paiement unique · Accès à vie</div>
+    </div>
+    <div class="offre-includes">
+      <h4>Ce qui est inclus</h4>
+      <div class="offre-item"><span class="check">✓</span> 6 modules vidéo complets</div>
+      <div class="offre-item"><span class="check">✓</span> 3 stratégies clés en main</div>
+      <div class="offre-item"><span class="check">✓</span> Plan de trading personnalisé</div>
+      <div class="offre-item"><span class="check">✓</span> Accès Discord privé</div>
+      <div class="offre-item"><span class="check">✓</span> Sessions live mensuelles</div>
+      <div class="offre-item"><span class="check">✓</span> Mises à jour à vie incluses</div>
+    </div>
+    <a href="#" class="btn-offre">Je veux accéder à la formation →</a>
+    <p class="offre-secure">🔒 Paiement sécurisé · Remboursement 30 jours</p>
+  </div>
+</div>
+
+<div class="section">
+  <span class="section-label">FAQ</span>
+  <h2>Questions fréquentes</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">Faut-il avoir des connaissances en trading ? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Non, la formation commence depuis zéro. Elle est conçue pour les débutants complets.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Combien de capital faut-il pour commencer ? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Tu peux commencer avec un compte démo. Pour trader en réel, 500€ suffisent pour appliquer les stratégies.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Combien de temps faut-il y consacrer par semaine ? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">5 à 10 heures par semaine suffisent. Les stratégies sont compatibles avec une activité professionnelle.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Pendant combien de temps ai-je accès à la formation ? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">L'accès est à vie. Tu peux suivre la formation à ton rythme et revenir autant de fois que tu veux.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Formation Trader Rentable · <a href="#">Mentions légales</a> · <a href="#">CGV</a> · <a href="#">Contact</a></p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>
